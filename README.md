@@ -26,207 +26,285 @@ The feature selection techniques used are:
 # CODING AND OUTPUT:
 ```
 import pandas as pd
+from scipy import stats
 import numpy as np
 ```
 ```
-df=pd.read_csv("bmi.csv")
-df
-```
-![image](https://github.com/user-attachments/assets/a66652f9-c881-4a86-9d60-f92810b15c79)
-```
+
+
+df=pd.read_csv("/content/bmi.csv")
 df.head()
 ```
-![image](https://github.com/user-attachments/assets/da322bb8-5154-4a88-956d-6b2ddc277842)
+![image](https://github.com/user-attachments/assets/79149bbb-6f55-4962-bbc8-3ce7bf6e9696)
+```
+df_null_sum=df.isnull().sum()
+df_null_sum
+```
+![image](https://github.com/user-attachments/assets/9662779d-a5ea-4f7b-a1ba-565688ce990a)
 ```
 df.dropna()
 ```
-![image](https://github.com/user-attachments/assets/be732e5d-f3d4-43d3-98cd-e3880852c0f4)
+![image](https://github.com/user-attachments/assets/cf7d445f-cf75-4557-9d14-512873372c3e)
 ```
-max_vals=np.max(np.abs(df[['Height','Weight']]))
+max_vals = np.max(np.abs(df[['Height', 'Weight']]), axis=0)
 max_vals
-```
-![image](https://github.com/user-attachments/assets/f637300f-cced-442c-a903-39645a36dbfb)
-```
-from sklearn.preprocessing import MinMaxScaler
-```
-```
-scaler=MinMaxScaler()
-df[['Height','Weight']]=scaler.fit_transform(df[['Height','Weight']])fr
-```
-```
-df.head(10)
-```
-![image](https://github.com/user-attachments/assets/1365399a-aa4c-4cb7-a4b6-796831621969)
 
 ```
-df1=pd.read_csv("bmi.csv")
-```
-```
-df2=pd.read_csv("bmi.csv")
-```
-```
-df3=pd.read_csv("bmi.csv")
-```
-```
-df4=pd.read_csv("bmi.csv")
-```
-```
-df5=pd.read_csv("bmi.csv")
-```
-```
-df1
-
-```
-
-![image](https://github.com/user-attachments/assets/a7322a98-3297-41b6-a5e8-595c91dc8b4d)
+![image](https://github.com/user-attachments/assets/186ef359-2363-40b7-afcc-59c4a6cb4a1e)
 ```
 from sklearn.preprocessing import StandardScaler
+df1=pd.read_csv("/content/bmi.csv")
+df1.head()
+
+
+```
+![image](https://github.com/user-attachments/assets/08d10462-4bb3-4390-8a48-ee5a368495ac)
+
+```
 sc=StandardScaler()
 df1[['Height','Weight']]=sc.fit_transform(df1[['Height','Weight']])
 df1.head(10)
-```
 
-![image](https://github.com/user-attachments/assets/6ce0dc2e-72ee-4283-ab1a-61e105b7b596)
 ```
-from sklearn.preprocessing import Normalizer
-scaler=Normalizer()
-df2[['Height','Weight']]=scaler.fit_transform(df2[['Height','Weight']])
+![image](https://github.com/user-attachments/assets/53fa6a47-1e21-4b41-b08c-049e90217919)
 ```
+from sklearn.preprocessing import MinMaxScaler
+scaler=MinMaxScaler()
+df[['Height','Weight']]=scaler.fit_transform(df[['Height','Weight']])
+df.head(10)
 ```
-df2
-```
-
-![image](https://github.com/user-attachments/assets/d5705138-76ec-4a7f-ab0a-04f1e473fdc6)
+![image](https://github.com/user-attachments/assets/be1ba289-6afe-4a0a-9be9-63cd389b3dd7)
 ```
 from sklearn.preprocessing import MaxAbsScaler
-scaler=MaxAbsScaler()
-df3[['Height','Weight']]=scaler.fit_transform(df2[['Height','Weight']])
+scaler = MaxAbsScaler()
+df3=pd.read_csv("/content/bmi.csv")
+df3.head()
+```
+![image](https://github.com/user-attachments/assets/7addb2c4-9fc4-4009-b4c2-5b2afec1d8f2)
+```
+df3[['Height','Weight']]=scaler.fit_transform(df3[['Height','Weight']])
 df3
 ```
+![image](https://github.com/user-attachments/assets/a55114c0-2d01-4d1e-a1bd-39e642d0613b)
 
-![image](https://github.com/user-attachments/assets/074d8e0c-80fa-47c0-bac6-7353f1b39ab7)
 ```
 from sklearn.preprocessing import RobustScaler
-scaler=RobustScaler()
-df4[['Height','Weight']]=scaler.fit_transform(df2[['Height','Weight']])
-df4
-```
+scaler = RobustScaler()
+df4=pd.read_csv("/content/bmi.csv")
+df4.head()
 
-![image](https://github.com/user-attachments/assets/de4deeba-b8ab-4c5d-8818-6768a02c8543)
 ```
-import seaborn as sns
-```
-```
-feature selection 
-import pandas as pd
+![image](https://github.com/user-attachments/assets/36eb06ee-5f29-45d1-8e17-ec808a739b38)
 
-import numpy as np 
-import seaborn as sns
 ```
+df4[['Height','Weight']]=scaler.fit_transform(df4[['Height','Weight']])
+df4.head()
 ```
-import seaborn as sns
-```
+![image](https://github.com/user-attachments/assets/4d2416f4-8f86-4b4f-80cf-753a9e32d606)
 ```
 import pandas as pd
-from sklearn.feature_selection import SelectKBest,f_regression,mutual_info_classif
-from sklearn.feature_selection import chi2
+df=pd.read_csv("/content/income(1) (1).csv")
+df.info()
 ```
+![image](https://github.com/user-attachments/assets/dce96fb9-6c75-41f8-b6c9-6fc9d7d1197d)
+
 ```
-data=pd.read_csv("titanic_dataset.csv")
-data
+df
 ```
-![image](https://github.com/user-attachments/assets/c0330f51-a459-4e63-ba8f-8356dc929c69)
+![image](https://github.com/user-attachments/assets/1df01f8a-5849-4441-b55b-19a575e6932b)
+
 ```
-data=data.dropna()
-x=data.drop(['Survived','Name','Ticket'],axis=1)
-y=data['Survived']
+df.info()
 ```
+![image](https://github.com/user-attachments/assets/e97adee1-0306-451a-92a4-fdbc9cacc69f)
+
 ```
-data["Sex"]=data["Sex"].astype("category")
-data["Cabin"]=data["Cabin"].astype("category")
-data["Embarked"]=data["Embarked"].astype("category")
+df_null_sum=df.isnull().sum()
+df_null_sum
 ```
+![image](https://github.com/user-attachments/assets/05657f48-bcaa-4679-9b09-f1c2191c3ecb)
 ```
-data["Sex"]=data["Sex"].cat.codes
-data["Cabin"]=data["Cabin"].cat.codes
-data["Embarked"]=data["Embarked"].cat.codes
+categorical_columns = ['JobType', 'EdType', 'maritalstatus', 'occupation', 'relationship', 'race', 'gender', 'nativecountry']
+df[categorical_columns] = df[categorical_columns].astype('category')
+df[categorical_columns]
 ```
+![image](https://github.com/user-attachments/assets/d5128368-79e7-4f3e-9ae1-9b1d85ed7413)
+
 ```
- data
+df[categorical_columns] = df[categorical_columns].apply(lambda x: x.cat.codes)
+df[categorical_columns]
+
+
 ```
-![image](https://github.com/user-attachments/assets/2a598b08-3121-478e-a22b-c7c0986f79c3)
+![image](https://github.com/user-attachments/assets/407d4555-82e5-4a62-8c5a-df0f004dad11)
+```
+X = df.drop(columns=['SalStat'])
+y = df['SalStat']
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.ensemble import RandomForestClassifier
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf.fit(X_train, y_train)
+```
+![image](https://github.com/user-attachments/assets/59bf0322-8112-4249-aaec-bc65a6decbab)
+```
+y_pred = rf.predict(X_test)
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Model accuracy using selected features: {accuracy}")
+```
+![image](https://github.com/user-attachments/assets/d3d9b6ad-5fd6-48fa-9332-94661e0bab72)
+```
+import pandas as pd
+from sklearn.feature_selection import SelectKBest, chi2, f_classif
+categorical_columns = ['JobType', 'EdType', 'maritalstatus', 'occupation', 'relationship', 'race', 'gender', 'nativecountry']
+df[categorical_columns] = df[categorical_columns].astype('category')
+df[categorical_columns]
+
+```
+![image](https://github.com/user-attachments/assets/5724662f-87e5-49ee-a6d3-c31d456840e1)
+
+```
+df[categorical_columns] = df[categorical_columns].apply(lambda x: x.cat.codes)
+df[categorical_columns]
+```
+![image](https://github.com/user-attachments/assets/e9e7a865-9f8a-478c-88a8-436624fd8a84)
+
+```
+X = df.drop(columns=['SalStat'])
+y = df['SalStat']
+k_chi2 = 6
+selector_chi2 = SelectKBest(score_func=chi2, k=k_chi2)
+X_chi2 = selector_chi2.fit_transform(X, y)
+selected_features_chi2 = X.columns[selector_chi2.get_support()]
+print("Selected features using chi-square test:")
+print(selected_features_chi2)
 ```
 
-k=5
-selector=SelectKBest(score_func=chi2, k=k)
-x=pd.get_dummies(x)
-x_new=selector.fit_transform(x,y)
-```
-```
-x_encoded =pd.get_dummies(x)
-selector=SelectKBest(score_func=chi2, k=5)
-x_new = selector.fit_transform(x_encoded,y)
-```
-```
-selected_feature_indices=selector.get_support(indices=True)
-selected_features=x.columns[selected_feature_indices]
-print("Selected_Feature:")
-print(selected_features)
-```
-![image](https://github.com/user-attachments/assets/317c121c-abf4-4dc7-a14d-0f3e899e50b4)
-```
-selector=SelectKBest(score_func=mutual_info_classif, k=5)
-x_new = selector.fit_transform(x,y)
-selected_feature_indices=selector.get_support(indices=True)
-selected_features=x.columns[selected_feature_indices]
-print("Selected Features:")
-print(selected_features)
-```
-![image](https://github.com/user-attachments/assets/70e1b6b3-e6a9-4b0c-abf6-e257e8dff14f)
-```
-selector=SelectKBest(score_func=mutual_info_classif, k=5)
-x_new = selector.fit_transform(x,y)
-selected_feature_indices=selector.get_support(indices=True)
-selected_features=x.columns[selected_feature_indices]
-print("Selected Features:")
-print(selected_features)
-```
-![image](https://github.com/user-attachments/assets/1814553c-c56f-42a4-9416-589884be81bd)
- 
-```
-from sklearn.feature_selection import SelectFromModel
-from sklearn.ensemble import RandomForestClassifier
-model=RandomForestClassifier()
-sfm=SelectFromModel(model,threshold='mean')
-x=pd.get_dummies(x)
-sfm.fit(x,y)
-selected_features=x.columns[sfm.get_support()]
-print("Selected Features:")
-print(selected_features)
-```
-![image](https://github.com/user-attachments/assets/412dcc3f-3af8-4678-9da0-1a354173f174)
-```
-from sklearn.ensemble import RandomForestClassifier
-model=RandomForestClassifier(n_estimators=100,random_state=42)
-model.fit(x,y)
-feature_importances=model.feature_importances_
-threshold=0.1
-selected_features = x.columns[feature_importances>threshold]
-print("Selected Features:")
-print(selected_features)
-```
-![image](https://github.com/user-attachments/assets/afe8c286-877d-41f4-9392-3aa16803f600)
-```
-from sklearn.ensemble import RandomForestClassifier
-model=RandomForestClassifier(n_estimators=100,random_state=42)
-model.fit(x,y)
-feature_importances=model.feature_importances_
-threshold=0.15
-selected_features = x.columns[feature_importances>threshold]
-print("Selected Features:")
-print(selected_features)
-```
-![image](https://github.com/user-attachments/assets/dca07307-d7fc-4546-8614-fadbeb133ca0)
+![image](https://github.com/user-attachments/assets/fef500a4-eeb5-468c-9f2f-76ba1c7cb362)
 
+```
+selected_features = ['age', 'maritalstatus', 'relationship', 'capitalgain', 'capitalloss',
+'hoursperweek']
+X = df[selected_features]
+y = df['SalStat']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+
+rf.fit(X_train, y_train)
+```
+
+![image](https://github.com/user-attachments/assets/92553ae8-7d6d-4bb4-8c55-371563b5ae9f)
+```
+y_pred = rf.predict(X_test)
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Model accuracy using selected features: {accuracy}")
+```
+
+![image](https://github.com/user-attachments/assets/28648db3-1956-402b-b15d-f902083ac3c7)
+
+```
+# @title
+!pip install skfeature-chappers
+```
+
+![image](https://github.com/user-attachments/assets/26e4ba0f-016e-42af-b4da-edf95aaf4dba)
+
+```
+# @title
+import numpy as np
+import pandas as pd
+from skfeature.function.similarity_based import fisher_score
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+# @title
+categorical_columns = ['JobType', 'EdType', 'maritalstatus', 'occupation', 'relationship', 'race', 'gender', 'nativecountry']
+df[categorical_columns] = df[categorical_columns].astype('category')
+
+# @title
+df[categorical_columns]
+```
+
+![image](https://github.com/user-attachments/assets/22d16557-b19b-4e38-bd96-68d9c1c317a0)
+
+```
+# @title
+df[categorical_columns] = df[categorical_columns].apply(lambda x: x.cat.codes)
+# @title
+df[categorical_columns]
+```
+
+![image](https://github.com/user-attachments/assets/2deeb6c3-f2b2-4218-aaff-838143ac436c)
+
+```
+k_anova = 5
+selector_anova = SelectKBest(score_func=f_classif, k=k_anova)
+X_anova = selector_anova.fit_transform(X, y)
+selected_features_anova = X.columns[selector_anova.get_support()]
+print("\nSelected features using ANOVA:")
+print(selected_features_anova)
+
+```
+
+![image](https://github.com/user-attachments/assets/da06e6ff-b945-47d4-949a-a54ad2a59450)
+```
+import pandas as pd
+from sklearn.feature_selection import RFE
+from sklearn.linear_model import LogisticRegression
+categorical_columns = ['JobType', 'EdType', 'maritalstatus', 'occupation', 'relationship', 'race', 'gender', 'nativecountry']
+df[categorical_columns] = df[categorical_columns].astype('category')
+df[categorical_columns]
+```
+
+
+![image](https://github.com/user-attachments/assets/ae7926f4-3b81-49ed-8f09-04c4cd19869d)
+
+```
+df[categorical_columns] = df[categorical_columns].apply(lambda x: x.cat.codes)
+df[categorical_columns]
+```
+
+![image](https://github.com/user-attachments/assets/baad27ba-6295-4042-a1dc-1e9f3ce58690)
+
+```
+X = df.drop(columns=['SalStat'])
+y = df['SalStat']
+logreg = LogisticRegression()
+n_features_to_select = 6
+rfe = RFE(estimator=logreg, n_features_to_select=n_features_to_select)
+rfe.fit(X, y)
+
+```
+
+![image](https://github.com/user-attachments/assets/6cc11804-e529-4cc6-86c8-e870ce515d69)
+
+![image](https://github.com/user-attachments/assets/8bd1a81c-2e5d-4167-995b-9b3688afde41)
+```
+selected_features = X.columns[rfe.support_]
+print("Selected features using RFE:")
+print(selected_features)
+
+```
+
+![image](https://github.com/user-attachments/assets/dae73b6b-d954-47a9-a528-a08accd63a9f)
+
+```
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.ensemble import RandomForestClassifier
+X_selected = X[selected_features]
+X_train, X_test, y_train, y_test = train_test_split(X_selected, y, test_size=0.3, random_state=42)
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf.fit(X_train, y_train)
+y_pred = rf.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Model accuracy using Fisher Score selected features: {accuracy}")
+
+```
+
+![image](https://github.com/user-attachments/assets/391f2baf-c6f1-4982-9126-55074fc66f23)
 # RESULT:
 Thus,Feature selection and Feature scaling has been used on the given dataset.
